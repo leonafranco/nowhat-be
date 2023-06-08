@@ -41,8 +41,8 @@ class UsersResource(MethodResource):
         user = self.service.create(**data)
         return user, 201
 
-    # @marshal_with(UserSchema)
-    # @use_kwargs(PutUserSchema, location="json")
-    # def put(self, id, **data):
-    #     user = self.service.update(id, **data)
-    #     return user
+    @marshal_with(UserSchema)
+    @use_kwargs(PostUserSchema, location="json")
+    def put(self, id, **data):
+        user = self.service.update(id, **data)
+        return user
